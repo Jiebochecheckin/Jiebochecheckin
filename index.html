@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <meta name="renderer" content="webkit">
+    <title>预约信息填写</title>
+    <link rel="stylesheet" href="https://service.muc.edu.cn/v2/static/externals/element-ui@2.13.0.min.css">
+    <link href="https://service.muc.edu.cn/v2/static/css/chunk-vendors.d8db708d12967e809452.css?v=1756453993611" rel="stylesheet">
+    <link href="https://service.muc.edu.cn/v2/static/css/chunk-common.44e6d36deaeadda56992.css?v=1756453993611" rel="stylesheet">
+    <link href="https://service.muc.edu.cn/v2/static/css/index.ca6967eb294ea7f350ea.css?v=1756453993611" rel="stylesheet">
+    <link rel="shortcut icon" href="https://imgservice.muc.edu.cn/all/6/12397.png">
+    <link rel="stylesheet" type="text/css" href="https://service.muc.edu.cn/v2/static/css/chunk-5a2380b4.2a544e5114e4fd71655f.css?v=1756453993611">
+    <style>
+        .form-container {
+            margin: 20px;
+        }
+        .form-container label {
+            font-size: 16px;
+        }
+        .form-container input, .form-container select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+        }
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        .form-container button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>填写预约信息</h2>
+        <form id="reservationForm">
+            <label for="resource">预约资源：【接驳车预约（地铁五棵松站—丰台校区）/ 接驳车预约（丰台校区—地铁五棵松站）】</label>
+            <input type="text" id="resource" name="resource" placeholder="请输入预约资源  接驳车预约（地铁五棵松站—丰台校区/丰台校区—地铁五棵松站）" required>
+
+            <label for="timeslot">预约时段：【如“20:30-20:30”必须遵守此格式】</label>
+            <input type="text" id="timeslot" name="timeslot" placeholder="请输入预约时段（如“20:30-20:30”必须遵守此格式）" required>
+
+            <label for="name">姓名：</label>
+            <input type="text" id="name" name="name" placeholder="请输入姓名" required>
+
+            <button type="submit">提交预约信息</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('reservationForm').onsubmit = function(event) {
+            event.preventDefault();  // 阻止表单的默认提交行为
+
+            // 获取表单中的值
+            var resource = document.getElementById('resource').value;
+            var timeslot = document.getElementById('timeslot').value;
+            var name = document.getElementById('name').value;
+
+            // 将这些值传递到下一个页面
+            localStorage.setItem('resource', resource);
+            localStorage.setItem('timeslot', timeslot);
+            localStorage.setItem('name', name);
+
+            // 跳转到预约成功页面
+            window.location.href = 'success.html';
+        };
+    </script>
+</body>
+</html>

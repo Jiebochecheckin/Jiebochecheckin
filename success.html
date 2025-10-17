@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-cn" data-theme="default" style="font-size: 118.133px;">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <meta name="renderer" content="webkit">
+    <title>预约签到</title>
+    <link rel="stylesheet" href="https://service.muc.edu.cn/v2/static/externals/element-ui@2.13.0.min.css">
+    <link href="https://service.muc.edu.cn/v2/static/css/chunk-vendors.d8db708d12967e809452.css?v=1756453993611" rel="stylesheet">
+    <link href="https://service.muc.edu.cn/v2/static/css/chunk-common.44e6d36deaeadda56992.css?v=1756453993611" rel="stylesheet">
+    <link href="https://service.muc.edu.cn/v2/static/css/index.ca6967eb294ea7f350ea.css?v=1756453993611" rel="stylesheet">
+    <link rel="shortcut icon" href="https://imgservice.muc.edu.cn/all/6/12397.png">
+    <link rel="stylesheet" type="text/css" href="https://service.muc.edu.cn/v2/static/css/chunk-5a2380b4.2a544e5114e4fd71655f.css?v=1756453993611">
+    <style>
+        /* 设置图标大小 */
+        .result img {
+            width: 20px;
+            height: 20px;
+        }
+        .content {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body class="site_mobile_common">
+    <div id="sign_in" class="m_signIn">
+        <div class="tit-top">
+            预约签到
+        </div>
+        <div class="cont">
+            <div class="el-card box-card sign_in_box is-always-shadow">
+                <div class="el-card__body">
+                    <div class="time_result">
+                        <span class="date green" style="font-size: 0.24rem;" id="currentDate"></span>
+                        <span class="time green" style="margin: 0.1rem 0px; font-size: 0.16rem;" id="currentTime"></span>
+                        <span class="result">
+                            <img src="checkmark.ico" alt="成功" />
+                            <span class="result_txt green">  签到成功</span>
+                        </span>
+                    </div>
+                    <div class="sign_in_info el-descriptions">
+                        <div class="el-descriptions__body">
+                            <table class="el-descriptions__table">
+                                <tbody>
+                                    <tr class="el-descriptions-row">
+                                        <td colspan="1" class="el-descriptions-item el-descriptions-item__cell">
+                                            <div class="el-descriptions-item__container">
+                                                <span class="el-descriptions-item__label has-colon ">签到时间</span>
+                                                <span class="el-descriptions-item__content" id="signInDate"></span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr class="el-descriptions-row">
+                                        <td colspan="1" class="el-descriptions-item el-descriptions-item__cell">
+                                            <div class="el-descriptions-item__container">
+                                                <span class="el-descriptions-item__label has-colon ">预约资源</span>
+                                                <span class="el-descriptions-item__content" id="resource"></span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr class="el-descriptions-row">
+                                        <td colspan="1" class="el-descriptions-item el-descriptions-item__cell">
+                                            <div class="el-descriptions-item__container">
+                                                <span class="el-descriptions-item__label has-colon ">预约时段</span>
+                                                <span class="el-descriptions-item__content" id="timeslot"></span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <div class="user_info el-descriptions">
+                    <div class="el-descriptions__body">
+                        <table class="el-descriptions__table">
+                            <tbody>
+                                <tr class="el-descriptions-row">
+                                    <td colspan="1" class="el-descriptions-item el-descriptions-item__cell">
+                                        <div class="el-descriptions-item__container">
+                                            <span class="el-descriptions-item__label has-colon ">姓名</span>
+                                            <span class="el-descriptions-item__content" id="userName"></span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr class="el-descriptions-row">
+                                    <td colspan="1" class="el-descriptions-item el-descriptions-item__cell">
+                                        <div class="el-descriptions-item__container">
+                                            <span class="el-descriptions-item__label has-colon ">学工号</span>
+                                            <span class="el-descriptions-item__content">23014514</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr class="el-descriptions-row">
+                                    <td colspan="1" class="el-descriptions-item el-descriptions-item__cell">
+                                        <div class="el-descriptions-item__container">
+                                            <span class="el-descriptions-item__label has-colon ">部门</span>
+                                            <span class="el-descriptions-item__content">外国语学院</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <button type="button" class="el-button el-button--primary">
+                    <span>查看我的预约</span>
+                </button>
+        </div>
+    </div>
+
+    <script>
+        // 获取当前本地时间
+        function updateTime() {
+            var now = new Date();
+            var hours = now.getHours().toString().padStart(2, '0');
+            var minutes = now.getMinutes().toString().padStart(2, '0');
+            var seconds = now.getSeconds().toString().padStart(2, '0');
+            var timeString = hours + ":" + minutes + ":" + seconds;
+            document.getElementById('currentTime').textContent = timeString;
+        }
+
+        // 获取当前日期
+        function updateDate() {
+            var now = new Date();
+            var year = now.getFullYear();
+            var month = (now.getMonth() + 1).toString().padStart(2, '0');
+            var day = now.getDate().toString().padStart(2, '0');
+            var dateString = year + '-' + month + '-' + day;
+
+            document.getElementById('currentDate').textContent = dateString;
+            document.getElementById('signInDate').textContent = dateString;
+        }
+
+        // 页面加载完成后更新一次日期和时间
+        window.onload = function() {
+            // 获取并显示本地存储的数据
+            document.getElementById('resource').textContent = localStorage.getItem('resource');
+            document.getElementById('timeslot').textContent = localStorage.getItem('timeslot');
+            document.getElementById('userName').textContent = localStorage.getItem('name');
+
+            updateDate();
+            updateTime();
+
+            // 每隔1秒更新一次时间
+            setInterval(updateTime, 1000);
+        };
+    </script>
+</body>
+</html>
