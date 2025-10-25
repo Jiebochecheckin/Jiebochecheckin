@@ -13,28 +13,94 @@
     <link rel="shortcut icon" href="https://imgservice.muc.edu.cn/all/6/12397.png">
     <link rel="stylesheet" type="text/css" href="https://service.muc.edu.cn/v2/static/css/chunk-5a2380b4.2a544e5114e4fd71655f.css?v=1756453993611">
     <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fb;
+            margin: 0;
+            padding: 0;
+        }
+
         .form-container {
-            margin: 20px;
+            width: 100%;
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            box-sizing: border-box;
         }
-        .form-container label {
+
+        h2 {
+            text-align: center;
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        label {
             font-size: 16px;
+            color: #333;
+            margin-bottom: 8px;
+            display: block;
         }
-        .form-container input, .form-container select {
+
+        select, input[type="text"] {
             width: 100%;
-            padding: 10px;
-            margin-top: 8px;
+            padding: 12px;
+            margin: 10px 0 20px 0;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
         }
-        .form-container button {
+
+        select:focus, input[type="text"]:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+
+        button {
             width: 100%;
-            padding: 10px;
+            padding: 14px;
             background-color: #4CAF50;
             color: white;
             border: none;
-            cursor: pointer;
+            border-radius: 6px;
             font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
-        .form-container button:hover {
+
+        button:hover {
             background-color: #45a049;
+        }
+
+        .form-container .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #888;
+        }
+
+        .form-container .footer a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        .form-container .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* 让select元素更美观 */
+        select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/0/0a/Black_arrow_down.svg') no-repeat right center;
+            background-size: 16px;
+            padding-right: 35px;
         }
     </style>
 </head>
@@ -42,17 +108,56 @@
     <div class="form-container">
         <h2>填写预约信息</h2>
         <form id="reservationForm">
-            <label for="resource">预约资源：【接驳车预约（地铁五棵松站—丰台校区）/ 接驳车预约（丰台校区—地铁五棵松站）】</label>
-            <input type="text" id="resource" name="resource" placeholder="请输入预约资源  接驳车预约（地铁五棵松站—丰台校区/丰台校区—地铁五棵松站）" required>
+            <label for="resource">预约资源（点击输入框选择）</label>
+            <select id="resource" name="resource" required>
+                <option value="接驳车预约（地铁五棵松站—丰台校区）">接驳车预约（地铁五棵松站—丰台校区）</option>
+                <option value="接驳车预约（丰台校区—地铁五棵松站）">接驳车预约（丰台校区—地铁五棵松站）</option>
+                <option value="接驳车预约（地铁篱笆房站—丰台校区）">接驳车预约（地铁篱笆房站—丰台校区）</option>
+                <option value="接驳车预约（丰台校区—地铁篱笆房站）">接驳车预约（丰台校区—地铁篱笆房站）</option>
+            </select>
 
-            <label for="timeslot">预约时段：【如“20:30-20:30”必须遵守此格式】</label>
-            <input type="text" id="timeslot" name="timeslot" placeholder="请输入预约时段（如“20:30-20:30”必须遵守此格式）" required>
+            <label for="timeslot">预约时段（点击输入框选择）</label>
+            <select id="timeslot" name="timeslot" required>
+                <option value="08:00-08:00">08:00</option>
+                <option value="08:30-08:30">08:30</option>
+                <option value="09:00-09:00">09:00</option>
+                <option value="09:30-09:30">09:30</option>
+                <option value="10:00-10:00">10:00</option>
+                <option value="10:30-10:30">10:30</option>
+                <option value="11:00-11:00">11:00</option>
+                <option value="11:30-11:30">11:30</option>
+                <option value="12:00-12:00">12:00</option>
+                <option value="12:30-12:30">12:30</option>
+                <option value="13:00-13:00">13:00</option>
+                <option value="13:30-13:30">13:30</option>
+                <option value="14:00-14:00">14:00</option>
+                <option value="14:30-14:30">14:30</option>
+                <option value="15:00-15:00">15:00</option>
+                <option value="15:30-15:30">15:30</option>
+                <option value="16:00-16:00">16:00</option>
+                <option value="16:30-16:30">16:30</option>
+                <option value="17:00-17:00">17:00</option>
+                <option value="17:30-17:30">17:30</option>
+                <option value="18:00-18:00">18:00</option>
+                <option value="18:30-18:30">18:30</option>
+                <option value="19:00-19:00">19:00</option>
+                <option value="19:30-19:30">19:30</option>
+                <option value="20:00-20:00">20:00</option>
+                <option value="20:30-20:30">20:30</option>
+                <option value="21:00-21:00">21:00</option>
+                <option value="21:30-21:30">21:30</option>
+                <option value="22:00-22:00">22:00</option>
+                <option value="22:30-22:30">22:30</option>
+            </select>
 
-            <label for="name">姓名：</label>
-            <input type="text" id="name" name="name" placeholder="请输入姓名" required>
+            <label for="name">姓名</label>
+            <input type="text" id="name" name="name" placeholder="请在此输入姓名" required>
 
-            <button type="submit">提交预约信息</button>
+            <button type="submit">提交 Submit</button>
         </form>
+
+        <div class="footer">
+        </div>
     </div>
 
     <script>
